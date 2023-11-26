@@ -48,6 +48,10 @@ class SeleccionAsientosApp:
         boton_cancelar = tk.Button(self.root, text="Cancelar", command=self.cancelar_seleccion)
         boton_cancelar.grid(row=8, column=7, columnspan=2, pady=10)
 
+        # Botón para volver al menú principal
+        self.boton_volver = tk.Button(self.root, text="Volver al Menú", command=self.volver_al_menu)
+        self.boton_volver.pack(side=tk.BOTTOM, pady=10)
+
     def toggle_asiento(self, numero_asiento):
         if numero_asiento in self.asientos_seleccionados:
             self.desseleccionar_asiento(numero_asiento)

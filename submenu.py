@@ -17,7 +17,7 @@ def abrirop1():
     subprocess.run(["python3","vuelospt2.py"])
     
 def abrirop2():
-    subprocess.run(["python3","asientos.py"])
+    subprocess.run(["python3","seleccionasientos.py"])
 
 def abrirop3():
     subprocess.run(["python3","vuelospt2.py"])

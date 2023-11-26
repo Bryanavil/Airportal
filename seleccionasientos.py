@@ -1,26 +1,10 @@
-
-
-
-
-
-
-
-##############################################PRUEBAS#########################################
 import tkinter as tk
 from tkinter import messagebox
 
-from pymongo import MongoClient
-
 class SeleccionAsientosApp:
-    def __init__(self, root, vuelo_id):
+    def __init__(self, root):
         self.root = root
         self.root.title("Seleccion de Asientos")
-        self.vuelo_id = vuelo_id
-
-        # Conectar a la base de datos MongoDB
-        self.client = MongoClient("mongodb://localhost:27017/")
-        self.db = self.client["fly"]
-        self.asientos_collection = self.db["asientos"]
 
         # Inicializar la interfaz
         self.asientos_disponibles = set(range(1, 49))
@@ -31,7 +15,7 @@ class SeleccionAsientosApp:
         self.botones_asientos = []
 
         # Leyenda para el estatus de los asientos
-        leyenda = tk.Label(self.root, text="Leyenda:\nVerde - Disponible\nRojo - Bloqueado", font=("Arial", 10))
+        leyenda = tk.Label(self.root, text="Leyenda:\nAzul - Seleccionado\nVerde - Disponible", font=("Arial", 10))
         leyenda.grid(row=0, column=8, rowspan=8, padx=10)
 
         for fila in range(8):
@@ -61,6 +45,10 @@ class SeleccionAsientosApp:
         boton_cancelar = tk.Button(self.root, text="Cancelar", command=self.cancelar_seleccion)
         boton_cancelar.grid(row=8, column=7, columnspan=2, pady=10)
 
+        # Botón para volver al menú principal
+        self.boton_volver = tk.Button(self.root, text="Volver al Menú", command=self.volver_al_menu)
+        self.boton_volver.grid(row=8, column=9, pady=10)
+
     def toggle_asiento(self, numero_asiento):
         if numero_asiento in self.asientos_seleccionados:
             self.desseleccionar_asiento(numero_asiento)
@@ -84,48 +72,30 @@ class SeleccionAsientosApp:
 
     def confirmar_seleccion(self):
         print("Asientos confirmados:", self.asientos_seleccionados)
-        for numero_asiento in self.asientos_seleccionados:
-            self.bloquear_asiento(numero_asiento)
         self.asientos_seleccionados.clear()
 
-    def bloquear_asiento(self, numero_asiento):
-        self.asientos_disponibles.remove(numero_asiento)
-        estado_asiento = {
-            "vuelo_id": self.vuelo_id,
-            "numero_asiento": numero_asiento,
-            "estado": "bloqueado"
-        }
-        self.asientos_collection.insert_one(estado_asiento)
-        fila, columna = self.obtener_fila_columna(numero_asiento)
-        self.botones_asientos[fila][columna].config(bg="red", fg="white")
+    def obtener_estado_asiento(self, numero_asiento):
+        if numero_asiento in self.asientos_disponibles:
+            return {"color": "green", "estado": "disponible"}
+        elif numero_asiento in self.asientos_seleccionados:
+            return {"color": "blue", "estado": "seleccionado"}
+        else:
+            return {"color": "", "estado": ""}
 
     def cancelar_seleccion(self):
         for numero_asiento in list(self.asientos_seleccionados):
             self.desseleccionar_asiento(numero_asiento)
 
-    def obtener_estado_asiento(self, numero_asiento):
-        estado_asiento = self.asientos_collection.find_one({
-            "vuelo_id": self.vuelo_id,
-            "numero_asiento": numero_asiento
-        })
-
-        if estado_asiento:
-            return {"color": "red", "estado": estado_asiento["estado"]}
-        elif numero_asiento in self.asientos_disponibles:
-            return {"color": "green", "estado": "disponible"}
-        else:
-            return {"color": "", "estado": ""}
-
     def obtener_fila_columna(self, numero_asiento):
         fila = (numero_asiento - 1) // 6
         columna = (numero_asiento - 1) % 6
         return fila, columna
+    
+    def volver_al_menu(self):
+        # Puedes realizar acciones adicionales aquí antes de volver al menú
+        self.root.destroy() 
 
 if __name__ == "__main__":
-    vuelo_id = "vuelo_123"
     root = tk.Tk()
-    app = SeleccionAsientosApp(root, vuelo_id)
+    app = SeleccionAsientosApp(root)
     root.mainloop()
-
-
-##########################################FIN DE LAS PRUEBAS###############################33
