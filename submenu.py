@@ -3,21 +3,27 @@ from tkinter import messagebox
 import subprocess
 
 def opcion1():
-    abrir_otro_archivo()
+    abrirop1()
 
 def opcion2():
-    messagebox.showinfo("screen", "llamada screen")
+    abrirop2()
 def opcion3():
-    messagebox.showinfo("screen", "llamada screen")
+    abrirop3()
 
 def opcion4():
-    messagebox.showinfo("screen", "llamada screen")
+    abrirop4()
 
-def opcion5():
-    messagebox.showinfo("screen", "llamada screen")
+def abrirop1():
+    subprocess.run(["python3","vuelospt2.py"])
+    
+def abrirop2():
+    subprocess.run(["python3","asientos.py"])
 
-def abrir_otro_archivo():
-    subprocess.run(["python3","login.py"])
+def abrirop3():
+    subprocess.run(["python3","vuelospt2.py"])
+
+def abrirop4():
+    subprocess.run(["python3","confirmacion.py"])
 
 
 
