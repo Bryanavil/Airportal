@@ -84,7 +84,11 @@ def restaurar_color(event):
 ##############FUNCION PARA ABRIR LA VENTANA DE RESERVA
 def abrir_ventana_reserva():
     # Abre la ventana de registro
+<<<<<<< HEAD
     rutareserva = "reserva.py"
+=======
+    rutareserva = "Airportal/reserva.py"
+>>>>>>> 2ff96e38c7329e155dd3546d74fbfdef64ad26bc
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutareserva])
@@ -113,23 +117,23 @@ marco_botones.pack(side=tk.TOP, fill=tk.X)
 
 
 ###########CARGAR LAS IMAGENES################33
-boton_vuelo = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/logo.png").subsample(2,2)
+boton_vuelo = tk.PhotoImage(file="imagenes/logo.png").subsample(2,2)
 label_logo = tk.Label(marco_botones, image=boton_vuelo)
 
 
 
-icono_vuelo = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconoavion.png").subsample(9,9)
+icono_vuelo = tk.PhotoImage(file="imagenes/iconoavion.png").subsample(9,9)
 label_iconovuelo = tk.Label(marco_botones, image=icono_vuelo)
 
 
-icono_reserva = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconoreservar.png").subsample(9,9)
+icono_reserva = tk.PhotoImage(file="imagenes/iconoreservar.png").subsample(9,9)
 label_iconoreservar = tk.Label(marco_botones, image=icono_reserva)
 
 
-icono_paseabordar = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconopaseabordar.png").subsample(9,9)
+icono_paseabordar = tk.PhotoImage(file="imagenes/iconopaseabordar.png").subsample(9,9)
 label_iconopaseabordar = tk.Label(marco_botones, image=icono_paseabordar)
 
-icono_estatusvuelo = tk.PhotoImage(file="/home/brama/Escritorio/AirportalPY/imagenes/iconoestatusvuelo.png").subsample(9,9)
+icono_estatusvuelo = tk.PhotoImage(file="imagenes/iconoestatusvuelo.png").subsample(9,9)
 label_iconoestatusvuelo = tk.Label(marco_botones, image=icono_estatusvuelo)
 
 ##LOGO DE LA PARTE IZQUIERDA SUPERIOR
