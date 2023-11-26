@@ -10,7 +10,7 @@ from tkinter import ttk
 menu = tk.Tk()
 
 # Establecer el título de la ventana
-menu.title("SUPER MENU")
+menu.title("MENU")
 
 
 
@@ -38,21 +38,28 @@ menu.geometry("950x550+{}+{}".format(x, y))
 
 ##################################################PRUEBAS#############################################################################3
 
-def opcion1():
-    menu.configure(bg="red")
+
+def abrir_estatus_vuelo():
+    # Ruta al archivo paseabordar.py
+    rutaestatusvuelo = "estatusvuelo.py"
     
+    # Abre el archivo de Python usando subprocess
+    subprocess.Popen(['python3', rutaestatusvuelo])
 
 
 def opcion2():
     menu.configure(bg="blue")
 
-def opcion3():
-    menu.configure(bg="gold")
+def abrir_ventana_paseabordar():
+    # Ruta al archivo paseabordar.py
+    rutapaseabordar = "paseabordar.py"
+    
+    # Abre el archivo de Python usando subprocess
+    subprocess.Popen(['python3', rutapaseabordar])
 
 
 
-def opcion4():
-    menu.configure(bg="gray")
+
 
 def cambiar_color_naranja(boton):
     # Restaurar el color original de todos los botones
@@ -77,13 +84,15 @@ def restaurar_color(event):
 ##############FUNCION PARA ABRIR LA VENTANA DE RESERVA
 def abrir_ventana_reserva():
     # Abre la ventana de registro
-    rutareserva = "/home/brama/Escritorio/AirportalPY/reserva.py"
+    rutareserva = "reserva.py"
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutareserva])
 
 
-   
+
+
+
 def actualizar_destinos(*args):
     origen_seleccionado = origen_combobox.get()
     
@@ -133,7 +142,7 @@ label_logo.grid(row=0, column=0, padx=10)
 boton1 = tk.Button(
     marco_botones,
     text="VUELO",
-    command=lambda: [opcion1(), cambiar_color_naranja(boton1)],
+    command=lambda: [cambiar_color_naranja(boton1)],
     compound=tk.LEFT,
     image=icono_vuelo,
     bg="#FFD700",  # Color de fondo por defecto
@@ -147,7 +156,7 @@ boton1 = tk.Button(
 boton2 = tk.Button(
     marco_botones,
     text="RESERVA",
-    command=lambda: [opcion2(), cambiar_color_naranja(boton2),abrir_ventana_reserva()],
+    command=lambda: [cambiar_color_naranja(boton2),abrir_ventana_reserva()],
     compound=tk.LEFT,
     image=icono_reserva,
     bg="#FFD700",  # Color de fondo por defecto
@@ -161,7 +170,7 @@ boton2 = tk.Button(
 boton3 = tk.Button(
     marco_botones,
     text="PASE DE ABORDAR",
-    command=lambda: [opcion3(), cambiar_color_naranja(boton3)],
+    command=lambda: [abrir_ventana_paseabordar(),cambiar_color_naranja(boton3)],
     compound=tk.LEFT,
     image=icono_paseabordar,
     bg="#FFD700",  # Color de fondo por defecto
@@ -175,7 +184,7 @@ boton3 = tk.Button(
 boton4 = tk.Button(
     marco_botones,
     text="ESTATUS DE VUELO",
-    command=lambda: [opcion1(), cambiar_color_naranja(boton4)],
+    command=lambda: [abrir_estatus_vuelo(), cambiar_color_naranja(boton4)],
     compound=tk.LEFT,
     image=icono_estatusvuelo,
     bg="#FFD700",  # Color de fondo por defecto
@@ -236,6 +245,37 @@ estados_destinos = {
     "Aguascalientes": estados_mexico,
     "Baja California": estados_mexico,
     "Baja California Sur": estados_mexico,
+    "Campeche":estados_mexico,
+    "Chiapas":estados_mexico,
+    "Chihuahua":estados_mexico,
+    "Coahuila":estados_mexico,
+    "Colima":estados_mexico,
+    "Durango":estados_mexico,
+    "Guanajuato":estados_mexico,
+    "Guerrero":estados_mexico,
+    "Hidalgo":estados_mexico,
+    "Jalisco":estados_mexico,
+    "México":estados_mexico,
+    "Michoacán":estados_mexico,
+    "Morelos":estados_mexico,
+    "Nayarit":estados_mexico,
+    "Nuevo León":estados_mexico,
+    "Oaxaca":estados_mexico,
+    "Puebla":estados_mexico,
+    "Querétaro":estados_mexico,
+    "Quintana Roo":estados_mexico,
+    "San Luis Potosí":estados_mexico,
+    "Sinaloa":estados_mexico,
+    "Sonora":estados_mexico,
+    "Tabasco":estados_mexico,
+    "Tamaulipas":estados_mexico,
+    "Tlaxcala":estados_mexico,
+    "Veracruz":estados_mexico,
+    "Yucatán":estados_mexico,
+    "Zacatecas":estados_mexico,
+
+
+
     # ... (continuar con otros estados)
 }
 
