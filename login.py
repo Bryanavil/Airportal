@@ -44,7 +44,7 @@ def iniciar_sesion():
 
 def registr():
     # Abre la ventana de registro
-    rutaregistro = "AIRPORTAL/registro.py"
+    rutaregistro = "registro.py"
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutaregistro])
@@ -53,7 +53,7 @@ def registr():
 def menu():
     # Abre la ventana del menú
     
-    rutamenu = "AIRPORTAL/menu.py"
+    rutamenu = "menu.py"
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutamenu])
