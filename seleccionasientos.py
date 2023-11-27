@@ -92,7 +92,6 @@ class SeleccionAsientosApp:
         return fila, columna
     
     def volver_al_menu(self):
-        # Puedes realizar acciones adicionales aquí antes de volver al menú
         self.root.destroy() 
 
 if __name__ == "__main__":
