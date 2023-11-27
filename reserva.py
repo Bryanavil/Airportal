@@ -11,7 +11,6 @@ reserva = tk.Tk()
 reserva.title("")
 reserva.geometry("800x600")
 reserva.resizable(False, False)
-reserva.overrideredirect(1)  # Eliminar el borde del título
 
 # Obtener el ancho y la altura de la pantalla
 ancho_pantalla = reserva.winfo_screenwidth()

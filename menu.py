@@ -84,16 +84,20 @@ def restaurar_color(event):
 ##############FUNCION PARA ABRIR LA VENTANA DE RESERVA
 def abrir_ventana_reserva():
     # Abre la ventana de registro
-<<<<<<< HEAD
     rutareserva = "reserva.py"
-=======
-    rutareserva = "Airportal/reserva.py"
->>>>>>> 2ff96e38c7329e155dd3546d74fbfdef64ad26bc
 
     # Abre el archivo de Python usando subprocess
     subprocess.Popen(['python3', rutareserva])
 
 
+
+
+def abrir_ventana_submenu():
+    # Abre la ventana de registro
+    rutasubmenu = "submenu.py"
+
+    # Abre el archivo de Python usando subprocess
+    subprocess.Popen(['python3', rutasubmenu])
 
 
 
@@ -146,7 +150,7 @@ label_logo.grid(row=0, column=0, padx=10)
 boton1 = tk.Button(
     marco_botones,
     text="VUELO",
-    command=lambda: [cambiar_color_naranja(boton1)],
+    command=lambda: [abrir_ventana_submenu(),cambiar_color_naranja(boton1)],
     compound=tk.LEFT,
     image=icono_vuelo,
     bg="#FFD700",  # Color de fondo por defecto

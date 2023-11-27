@@ -114,7 +114,7 @@ boton3.grid(row=0, column=3, padx=10)
 
 boton4 = tk.Button(
     marco_botones,
-    text="CONFRIRMACION",
+    text="CONFIRMACION",
     command=lambda: [opcion4()],
     compound=tk.LEFT,
     image=op4,
